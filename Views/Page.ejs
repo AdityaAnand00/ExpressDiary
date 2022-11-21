@@ -1,0 +1,27 @@
+<!-- this page gets rendered when we click  on the button "more" in page "http://localhost:3000/diary" -->
+<%- include('./layout/Header')%>
+<%- include('./layout/Navbar') %>
+        <div class="page-container">
+            <h1><%= data.title %></h1>
+            <p><%= data.date %></p>
+            <p class="diary-text"><%= data.description %></p>
+
+
+            <!--from this div what we are gonnna do is , we are gonna add a button/anchor tag of  "Edit" and on clicking on it , we must be able  to  edit that same particular diary  and  can edit the  title , date , description as well. lets see how we are gonna do it . 
+
+           # we simply add the path  to  it along with  the  particular id . , now lets go and create route (GET) for it in the app.js file  
+            -->
+            <div class="settings">
+                <a href="/diary/edit/<%= data.id %>" 
+                    class="edit">Edit</a>
+
+                <form action="/diary/delete/<%= data.id %>?_method=DELETE" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit"  value="delete" class="delete">
+
+                </form>    
+            </div>
+        </div>
+
+<%- include('./layout/Footer')%>
+

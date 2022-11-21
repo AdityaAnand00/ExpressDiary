@@ -1,0 +1,31 @@
+<%- include('./layout/Header') %>
+<%- include('./layout/Navbar') %>
+        <div class="add-container">
+            <div class="add">
+                <p>ADD TO DIARY</p>
+                <a href="/add">ADD</a>
+            </div>
+
+            <div class="diary">
+                <% data.forEach((diary) =>{%>
+                        <div class="diary-container">
+                            <h3>
+                                <%= diary.title %>
+                            </h3>
+                            <P>
+                                <%= diary.date %>
+                            </P>
+                            <a href="/diary/<%= diary.id %>">More</a>
+                        <!--so before adding anyy link  to our href we are able to add different diary entries and they are visible to us in the form of cards now there is a button/anchor tag on each card  which is named as "More" and when we click on that link we are able to open that particular diary entry  .. 
+                        so  for doing that lets see below what we  are  gonna do ...
+                    
+                    # so now we  need to add the path  for  diary page and since  the diary that  we need to see will be only 1 at a time we will sending ID  along  (since ID of each diary entry are different and is made in the DB while creation of it for the 1st time)
+                    # now lets go bacck to app.js file and create the route for the following so that  on clicking , and passing a unique object id , we are redirected to  the page of that particluar diary 
+                    -->
+                        </div>
+                <%}) %>
+        </div>
+
+        </div>
+        <!-- the abovve line displays the data fromm the DB ,to our /diary "this" page  , and if we obseerve our data that we got it is actually in the form of array of objects ,so we are gonna use loop and for each loop we are gonna diaplay its title desc and data -->
+  <%- include('./layout/Footer') %>

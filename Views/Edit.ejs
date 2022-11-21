@@ -1,0 +1,44 @@
+<!-- this page gets rendered when we click  on the button "more" in page "http://localhost:3000/diary" -->
+<%- include('./layout/Header')%>
+<%- include('./layout/Navbar') %>
+            
+<div class="add-to-diary">
+    <h1>EDIT <span class="green-text">DIARY</span></h1>
+    
+    <form action="/diary/edit/<%= data.id %>?_method=PUT" method="post">
+        
+        <input type="hidden" name="_method" value="PUT">
+
+        <!--here we will be using put method since  we will be updating it in DB, but there is a problem  thhis method , "method = "put" " only allows 2 arguments to be assigned  to it that is : GET adnd POST , it does not allow put and delete method of http.  the way in which we are gonna do is by over-riding the , post method and enforcing it to act as PUT  method. method-override is a module  "https://www.npmjs.com/package/method-override" must refer this link to know how  it works.
+        
+            
+        --> 
+        <div class="form-group">
+            <label for="title">TITLE</label>
+            <input type="text"
+            class="form-control" id="title"
+            name="title" value="<%= data.title %>"
+            >
+        </div>
+
+            <div class="form-group">
+                <label for="title">Description</label>
+                <textarea name="description" id="description" cols="30" rows="5"><%= data.description %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Date</label>
+                <input type="date"
+                class="form-control" id="date"
+                name="date"
+                >
+            </div>
+    
+            <input type="submit" value="Finish Your Diary">
+    </form>
+
+
+</div>
+
+<%- include('./layout/Footer')%>
+
